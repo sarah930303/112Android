@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Temperature</string>
+    <string name="_C">攝氏溫度:</string>
+    <string name="_switch">轉換</string>
+    <string name="_F">華氏溫度</string>
+    <string name="_input">攝氏溫度</string>
+</resources>
