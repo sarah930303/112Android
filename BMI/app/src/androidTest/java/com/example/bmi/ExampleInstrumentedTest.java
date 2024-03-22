@@ -1,4 +1,4 @@
-package com.example.ui_test;
+package com.example.bmi;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.ui_test", appContext.getPackageName());
+        assertEquals("com.example.bmi", appContext.getPackageName());
     }
 }

@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace = "com.example.ui_test2"
+    namespace = "com.example.bmi"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.ui_test2"
-        minSdk = 30
+        applicationId = "com.example.bmi"
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
