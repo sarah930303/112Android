@@ -31,8 +31,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         EditText editWeight = findViewById(R.id.edtweight);
 
         if (v.getId() == R.id.btncalc) {
-            double height = Double.parseDouble(ediHeight.getText().toString());
-            double weight = Double.parseDouble(editWeight.getText().toString());
+            String heightStr = ediHeight.getText().toString();
+            String weightStr = editWeight.getText().toString();
+
+            if (heightStr.isEmpty() || weightStr.isEmpty()) {
+                txvshow.setText("請輸入身高和體重。");
+                txvshow.setTextColor(Color.BLACK); // 您可以設置任何您喜歡的顏色作為錯誤消息的顏色
+                return;
+            }
+
+            double height = Double.parseDouble(heightStr);
+            double weight = Double.parseDouble(weightStr);
+
+            if (height <= 0 || weight <= 0) {
+                txvshow.setText("無效的輸入。請輸入身高和體重的正數。");
+                txvshow.setTextColor(Color.BLACK); // 您可以設置任何您喜歡的顏色作為錯誤消息的顏色
+                return;
+            }
+
             double bmi = weight / Math.pow(height / 100.0, 2);
 
             if (bmi >= 24.9)
