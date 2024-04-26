@@ -3,21 +3,30 @@ package com.example.ch5_5;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
-public class MainActivity extends  AppCompatActivity implements View.OnTouchListener {
+public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
     private TextView txvOutput;
+    private Vibrator vb; // Declare Vibrator object
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        txvOutput =(TextView) findViewById(R.id.lblOutput);
+
+        // Initialize Vibrator object
+        vb = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+        txvOutput = findViewById(R.id.lblOutput);
         txvOutput.setTextSize(25);
-        ConstraintLayout layout=(ConstraintLayout) findViewById(R.id.activity_main);
+        ConstraintLayout layout = findViewById(R.id.activity_main);
         layout.setOnTouchListener(this);
     }
 
@@ -28,15 +37,16 @@ public class MainActivity extends  AppCompatActivity implements View.OnTouchList
             case MotionEvent.ACTION_DOWN:
                 txvOutput.setText("ACTION_DOWN");
                 txvOutput.setTextColor(Color.RED);
+                vb.vibrate(VibrationEffect.createOneShot(2000, 20));
                 break;
             case MotionEvent.ACTION_UP:
                 txvOutput.setText("ACTION_UP");
                 txvOutput.setTextColor(Color.GREEN);
                 break;
             case MotionEvent.ACTION_MOVE:
-                float x =event.getX();
-                float y =event.getY();
-                txvOutput.setText("X="+x+"\nY ="+y);
+                float x = event.getX();
+                float y = event.getY();
+                txvOutput.setText("X=" + x + "\nY =" + y);
                 txvOutput.setTextColor(Color.BLUE);
                 break;
         }
