@@ -6,15 +6,12 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ticketemo"
+        android:icon="@mipmap/pizza"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ticketemo"
+        android:roundIcon="@mipmap/pizza"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RdbDemo"
+        android:theme="@style/Theme.CheckboxDemo"
         tools:targetApi="31">
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

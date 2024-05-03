@@ -10,7 +10,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="性別:"
+        android:text="@string/gender"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -32,15 +32,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="男"
-            tools:text="@string/male" />
+            android:text="@string/male" />
 
         <RadioButton
             android:id="@+id/rdbGirl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="女"
-            tools:text="@string/female" />
+            android:text="@string/female" />
     </RadioGroup>
 
     <RadioGroup
@@ -57,22 +55,19 @@
             android:id="@+id/rdbAdult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="全票"
-            tools:text="@string/regularticket" />
+            android:text="@string/regularticket" />
 
         <RadioButton
             android:id="@+id/rdbChild"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="兒童票"
-            tools:text="@string/childticket" />
+            android:text="@string/childticket" />
 
         <RadioButton
             android:id="@+id/rdbStudent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="學生票"
-            tools:text="@string/studentticket" />
+            android:text="@string/studentticket" />
     </RadioGroup>
 
     <EditText
@@ -82,7 +77,6 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="購買張數"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rgType" />
@@ -93,7 +87,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="15dp"
-        android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etQuantity" />
 
@@ -103,7 +96,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:layout_marginTop="20dp"
-        android:text="保存"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblOutput" />
 
@@ -113,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="確定"
+        android:text="@string/confirm"
         app:layout_constraintStart_toEndOf="@+id/btnSave"
         app:layout_constraintTop_toBottomOf="@+id/lblOutput" />
 

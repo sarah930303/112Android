@@ -1,4 +1,3 @@
-//A111222030
 package com.example.rdbdemo;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 // Create an Intent to start MainActivity2
                 Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                 // Pass the saved records to MainActivity2
-                intent.putStringArrayListExtra("savedRecords", (ArrayList<String>) savedRecords);
+                intent.putStringArrayListExtra(getString(R.string.savedRecords), (ArrayList<String>) savedRecords);
                 // Start MainActivity2
                 startActivity(intent);
             }
@@ -76,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         int selectedGenderId = rgGender.getCheckedRadioButtonId();
         RadioButton rdbGender = findViewById(selectedGenderId);
         if (rdbGender != null) {
-            str += "性別: " + rdbGender.getText() + "\n";
+            str += getResources().getString(R.string.gender) + ": " + rdbGender.getText() + "\n";
         }
 
         int selectedTypeId = rgType.getCheckedRadioButtonId();
@@ -84,14 +83,14 @@ public class MainActivity extends AppCompatActivity {
         if (rdbType != null) {
             String selectedType = rdbType.getText().toString();
             switch (selectedType) {
-                case "全票":
-                    str += "票種: 全票\n";
+                case "Regular Ticket":
+                    str += getResources().getString(R.string.ticketType) + ": " + getResources().getString(R.string.regularTicket) + "\n";
                     break;
-                case "兒童票":
-                    str += "票種: 兒童票\n";
+                case "Children Ticket":
+                    str += getResources().getString(R.string.ticketType) + ": " + getResources().getString(R.string.childrenTicket) + "\n";
                     break;
-                case "學生票":
-                    str += "票種: 學生票\n";
+                case "Student Ticket":
+                    str += getResources().getString(R.string.ticketType) + ": " + getResources().getString(R.string.studentTicket) + "\n";
                     break;
             }
         }
@@ -99,15 +98,15 @@ public class MainActivity extends AppCompatActivity {
         String quantityStr = etQuantity.getText().toString();
         int quantity = quantityStr.isEmpty() ? 0 : Integer.parseInt(quantityStr);
 
-        // 計算總金額
+        // Calculate total price
         int totalPrice = calculateTotalPrice(selectedTypeId, quantity);
-        str += "購買張數: " + quantity + "\n";
-        str += "總金額: " + totalPrice + "元\n";
+        str += getResources().getString(R.string.numberOfTickets) + ": " + quantity + "\n";
+        str += getResources().getString(R.string.total) + ": " + totalPrice + getResources().getString(R.string.currency) + "\n";
 
         lblOutput.setText(str);
     }
 
-    // 根據選擇的票種和購買張數計算總金額
+    // Calculate total price based on selected ticket type and quantity
     private int calculateTotalPrice(int selectedTypeId, int quantity) {
         int price = 0;
         if (selectedTypeId == R.id.rdbAdult) {
@@ -123,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void saveRecord() {
         if (rgGender.getCheckedRadioButtonId() == -1 || rgType.getCheckedRadioButtonId() == -1 || etQuantity.getText().toString().isEmpty()) {
-            Toast.makeText(MainActivity.this, "請填寫完整資料", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, getResources().getString(R.string.completeData), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -131,6 +130,6 @@ public class MainActivity extends AppCompatActivity {
         savedRecords.add(record);
         // Clear input fields
         etQuantity.setText("");
-        Toast.makeText(MainActivity.this, "已保存紀錄", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, getResources().getString(R.string.recordSaved), Toast.LENGTH_SHORT).show();
     }
 }
