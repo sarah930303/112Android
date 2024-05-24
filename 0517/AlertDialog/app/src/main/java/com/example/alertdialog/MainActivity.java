@@ -12,38 +12,33 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.BreakIterator;
-
 public class MainActivity extends AppCompatActivity implements DialogInterface.OnClickListener {
 
-    private BreakIterator txvshow;
+    private TextView txvshow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView txvshow = findViewById(R.id.txvshow);
+        txvshow = findViewById(R.id.txvshow);
         Button btnAbout = findViewById(R.id.btnAbout);
-        btnAbout.setOnClickListener(new View.OnClickListener()
-        {
+        btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-               new AlertDialog.Builder(MainActivity.this)
-                .setTitle("關於本書")
-                .setMessage("Android App 開發教學")
-                       .setCancelable(true)
-                          .setPositiveButton("確定", null)
-                            .show();
+            public void onClick(View v) {
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("關於本書")
+                        .setMessage("Android App 開發教學")
+                        .setCancelable(true)
+                        .setPositiveButton("確定", null)
+                        .show();
             }
         });
-        Button btnExit = (Button) findViewById(R.id.btnExit);
-        btnExit.setOnClickListener(new View.OnClickListener()
-        {
+
+        Button btnExit = findViewById(R.id.btnExit);
+        btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle("確認視窗")
                         .setMessage("確定要離開嗎?")
@@ -57,18 +52,17 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
                         .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(MainActivity.this,"按下取消按鈕",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "按下取消按鈕", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .show();
             }
         });
-        Button btnColor = (Button) findViewById(R.id.btnColor);
-        btnColor.setOnClickListener(new View.OnClickListener()
-        {
+
+        Button btnColor = findViewById(R.id.btnColor);
+        btnColor.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 new AlertDialog.Builder(MainActivity.this)
                         .setTitle("選擇顏色")
                         .setItems(new String[]{"紅色", "綠色", "藍色"}, new DialogInterface.OnClickListener() {
@@ -93,15 +87,15 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
                         .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(MainActivity.this,"按下取消按鈕",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "按下取消按鈕", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .show();
             }
         });
-        Button btnSelect = (Button) findViewById(R.id.btnSelect);
-        btnSelect.setOnClickListener(new View.OnClickListener()
-        {
+
+        Button btnSelect = findViewById(R.id.btnSelect);
+        btnSelect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(MainActivity.this)
@@ -116,29 +110,23 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
     @Override
     public void onClick(DialogInterface dialog, int which) {
-//        switch (which) {
-//            case DialogInterface.BUTTON_POSITIVE:
-//                finish();
-//                break;
-//            case DialogInterface.BUTTON_NEGATIVE:
-//                Toast.makeText(this,"按下取消按鈕",Toast.LENGTH_SHORT).show();
-//                break;
-//        }
         String msg = "你選擇了:";
         switch (which) {
             case DialogInterface.BUTTON_POSITIVE:
                 SparseBooleanArray checked = ((AlertDialog) dialog).getListView().getCheckedItemPositions();
+                StringBuilder selectedItems = new StringBuilder();
                 for (int i = 0; i < checked.size(); i++) {
                     if (checked.valueAt(i)) {
-                        msg += ((AlertDialog) dialog).getListView().getAdapter().getItem(checked.keyAt(i)) + " ";
+                        selectedItems.append(((AlertDialog) dialog).getListView().getAdapter().getItem(checked.keyAt(i))).append(" ");
                     }
                 }
+                msg += selectedItems.toString();
+                txvshow.setText(msg);
                 Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
                 break;
             case DialogInterface.BUTTON_NEGATIVE:
                 Toast.makeText(this, "按下取消按鈕", Toast.LENGTH_SHORT).show();
                 break;
         }
-
     }
 }
